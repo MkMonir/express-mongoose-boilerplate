@@ -48,7 +48,7 @@ exports.createOne = (Model) =>
 
 exports.getOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = Model.findById(req.params.id);
+    const doc = await Model.findById(req.params.id);
 
     if (!doc) {
       return next(new AppError('No document found with that ID', 404));
